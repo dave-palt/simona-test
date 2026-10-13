@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Galleria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/app.css?v=6">
+<style>
+#loading{display:flex;flex-direction:column;align-items:center;gap:1rem;padding:3rem 1rem}
+#loading[hidden]{display:none} /* display:flex batte l'attributo hidden: override esplicito */
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid rgba(0,0,0,.12);border-top-color:var(--terracotta,#a0522d);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <span class="brand">Simona Lascialfari</span>
+</header>
+
+<main id="loading">
+  <div class="spin" aria-hidden="true"></div>
+  <p class="hint">Apro la galleria…</p>
+</main>
+
+<main id="gate" hidden>
+  <form id="pwform">
+    <p class="hint">Questa galleria è protetta. Inserisci la password che ti è stata comunicata.</p>
+    <input id="pw" type="password" autocomplete="off" placeholder="Password">
+    <button type="submit" id="go">Entra</button>
+    <p id="err" class="err" hidden>Password errata</p>
+  </form>
+</main>
+
+<main id="gallery" hidden>
+  <h1 id="gtitle"></h1>
+  <div id="grid"></div>
+  <button id="more" hidden>Carica altre foto</button>
+  <footer><a id="dl" class="dl" target="_blank" rel="noopener">Scarica gli originali</a></footer>
+</main>
+
+<div id="lb" hidden>
+  <button id="close" aria-label="Chiudi">×</button>
+  <button id="prev" aria-label="Precedente">‹</button>
+  <img id="lbimg" alt="">
+  <div id="lbcap"></div>
+  <button id="next" aria-label="Successiva">›</button>
+</div>
+
+<script src="../assets/app.js?v=7"></script>
+</body>
+</html>

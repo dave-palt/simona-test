@@ -1,0 +1,56 @@
+:root {
+  --ivory: hsl(45 30% 97%);
+  --ink: hsl(0 0% 10%);
+  --border: hsl(45 10% 85%);
+  --terracotta: hsl(12 37% 47%);
+  --muted: hsl(0 0% 40%);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin:0; font-family: var(--sans); background: var(--ivory); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* header brand — come la navbar del sito */
+.bar { display:flex; align-items:center; justify-content:center; padding:1.1rem 1rem .9rem; border-bottom:1px solid var(--border); background:var(--ivory); position:relative; }
+.brand { font-family:var(--serif); font-size:1.05rem; letter-spacing:.25em; text-transform:uppercase; color:var(--ink); }
+
+/* gate password */
+#gate { max-width:380px; margin:16vh auto 0; padding:0 1rem; text-align:center; }
+#gate .hint { font-size:.85rem; color:var(--muted); line-height:1.6; margin-bottom:1.4rem; }
+#pw { width:100%; padding:.85rem 1rem; border:1px solid var(--border); background:#fff; color:var(--ink); font-size:1rem; font-family:var(--sans); border-radius:0; text-align:center; letter-spacing:.05em; }
+#pw:focus { outline:none; border-color:var(--ink); }
+#go { width:100%; margin-top:.6rem; padding:.85rem 1rem; border:1px solid var(--ink); background:var(--ink); color:var(--ivory); font-size:.75rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; cursor:pointer; border-radius:0; transition: background .25s, color .25s, border-color .25s; }
+#go:hover { background:var(--terracotta); border-color:var(--terracotta); color:var(--ivory); }
+#go:disabled { opacity:.5; cursor:wait; }
+.err { color:var(--terracotta); font-size:.85rem; margin-top:.8rem; }
+
+/* galleria */
+#gallery { max-width:1100px; margin:0 auto; padding:2.5rem 1rem 4rem; }
+#gtitle { font-family:var(--serif); font-weight:500; font-size:clamp(1.8rem, 4vw, 2.6rem); letter-spacing:.04em; margin:0 0 .4rem; }
+#grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr)); gap:12px; margin-top:1.6rem; }
+#grid img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0; cursor:zoom-in; transition:opacity .3s; display:block; background:hsl(45 10% 90%); }
+#grid img:hover { opacity:.85; }
+#more { display:block; margin:2.2rem auto 0; padding:.75rem 2.2rem; border:1px solid var(--border); background:transparent; color:var(--ink); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; cursor:pointer; border-radius:0; transition:border-color .25s, color .25s; }
+#more[hidden] { display:none; } /* display:block batte l'attributo hidden */
+#more:hover { border-color:var(--ink); }
+#offline { max-width:420px; margin:16vh auto 0; text-align:center; }
+#offline .hint { font-size:.9rem; color:var(--muted); line-height:1.7; }
+#loading { max-width:420px; margin:16vh auto 0; text-align:center; }
+#loading .hint { font-size:.9rem; color:var(--muted); letter-spacing:.08em; }
+
+/* footer */
+footer { padding:2.5rem 0 3rem; text-align:center; }
+.dl { display:inline-block; color:var(--terracotta); text-decoration:none; font-size:.75rem; letter-spacing:.18em; text-transform:uppercase; border-bottom:1px solid var(--terracotta); padding-bottom:2px; }
+
+/* lightbox — full screen scuro, coerente col sito per la visione foto */
+#lb { position:fixed; inset:0; background:rgba(10,10,10,.96); display:flex; align-items:center; justify-content:center; z-index:10; }
+#lb[hidden] { display:none; }
+main[hidden] { display:none; }
+#lb img { max-width:94vw; max-height:88vh; object-fit:contain; }
+#lbcap { position:absolute; bottom:0; left:0; right:0; text-align:center; color:#fff; padding:1.6rem 1rem 1rem; background:linear-gradient(transparent, rgba(0,0,0,.6)); pointer-events:none; }
+#lbcap .t { font-family:var(--serif); font-size:1.05rem; letter-spacing:.03em; }
+#lbcap .d { color:rgba(255,255,255,.78); font-size:.8rem; margin-top:.2rem; line-height:1.5; }
+#lb button { position:absolute; background:none; border:0; color:#fff; font-size:2.4rem; font-family:var(--serif); cursor:pointer; padding:1rem; opacity:.7; transition:opacity .25s; line-height:1; }
+#lb button:hover { opacity:1; }
+#close { top:0; right:0; }
+#prev { left:0; } #next { right:0; }

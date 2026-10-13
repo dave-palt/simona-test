@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Galleria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../g/assets/app.css?v=3">
+</head>
+<body>
+<header class="bar"><span class="brand">Simona Lascialfari</span></header>
+<main id="gate" hidden>
+  <form id="pwform">
+    <p class="hint">Questa galleria è protetta. Inserisci la password che ti è stata comunicata.</p>
+    <input id="pw" type="password" autocomplete="off" placeholder="Password">
+    <button type="submit" id="go">Entra</button>
+    <p id="err" class="err" hidden>Password errata</p>
+  </form>
+</main>
+
+<div id="loading"><p class="hint">Caricamento…</p></div>
+
+<main id="offline" hidden>
+  <p class="hint">Servizio temporaneamente non disponibile.<br>Riprova più tardi.</p>
+</main>
+<main id="invalid" hidden>
+  <p class="hint">Questo link non è più valido.<br>La bozza potrebbe essere stata pubblicata, sostituita o revocata.</p>
+</main>
+<main id="gallery" hidden>
+  <h1 id="gtitle"></h1>
+  <div id="grid"></div>
+  <button id="more" hidden>Carica altre foto</button>
+</main>
+<div id="lb" hidden>
+  <button id="close" aria-label="Chiudi">×</button>
+  <button id="prev" aria-label="Precedente">‹</button>
+  <img id="lbimg" alt="">
+  <div id="lbcap"></div>
+  <button id="next" aria-label="Successiva">›</button>
+</div>
+<script src="../g/assets/pviewer.js?v=4"></script>
+</body>
+</html>
