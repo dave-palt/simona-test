@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pagina non trovata — Simona Lascialfari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:hsl(45 30% 97%);--ink:hsl(0 0% 10%);--terra:hsl(12 37% 47%);--muted:hsl(0 0% 40%);--border:hsl(45 10% 85%)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--ivory);color:var(--ink)}
+.bar{display:flex;align-items:center;justify-content:center;padding:1.1rem 1rem .9rem;border-bottom:1px solid var(--border)}
+.brand{font-family:Cormorant Garamond,Georgia,serif;font-size:1.05rem;letter-spacing:.25em;text-transform:uppercase}
+.nf{max-width:460px;margin:14vh auto 0;padding:0 1.4rem;text-align:center}
+.nf h1{font-family:Cormorant Garamond,Georgia,serif;font-weight:500;font-size:4rem;margin:0;color:var(--terra);letter-spacing:.04em}
+.nf .t{font-family:Cormorant Garamond,Georgia,serif;font-size:1.35rem;margin:.4rem 0 1rem}
+.nf .m{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0 0 2rem}
+.dl{display:inline-block;color:var(--terra);text-decoration:none;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--terra);padding-bottom:2px}
+</style>
+<script>
+(function () {
+  // dirotta SOLO /p/<slug>/ (bozze) sul viewer dinamico — niente regex con
+  // backslash: gli strati di escaping (TS template, JSON, CDN) li mangiano
+  var p = location.pathname;
+  var i = p.indexOf("/p/");
+  if (i < 0) return;
+  var rest = p.slice(i + 3);
+  var slug = rest.endsWith("/") ? rest.slice(0, -1) : rest;
+  if (!/^[a-z0-9-]+$/.test(slug)) return;
+  var prefix = p.slice(0, i + 1); // include lo slash finale
+  var t = new URLSearchParams(location.search).get("t") || "";
+  location.replace(prefix + "p/viewer.html?slug=" + slug + (t ? "&t=" + t : ""));
+})();
+</script>
+</head>
+<body>
+<header class="bar"><span class="brand">Simona Lascialfari</span></header>
+<main class="nf">
+  <h1>404</h1>
+  <p class="t">Questa pagina non esiste, o il suo indirizzo è cambiato.</p>
+  <p class="m">Se stavi aprendo una galleria condivisa, verifica di usare il link completo ricevuto da Simona.</p>
+  <a id="home" class="dl" href="/">Torna all'inizio</a>
+</main>
+<script>
+(function () {
+  // radice del SITO, non della radice utente: sui project-pages il primo
+  // segmento è il nome del sito (/simona-test/)
+  var seg = (location.pathname.split("/")[1] || "").split("?")[0];
+  var root = ["g", "p", "404.html", "index.html"].indexOf(seg) >= 0 ? "/" : "/" + seg + "/";
+  document.getElementById("home").setAttribute("href", root);
+})();
+</script>
+</body></html>
